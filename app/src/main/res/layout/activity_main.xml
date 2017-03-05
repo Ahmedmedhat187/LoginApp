@@ -17,7 +17,7 @@
 
     <TextView
         android:layout_below="@+id/v"
-        android:text="The Fastest App"
+        android:text="Welcome to our App"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:fontFamily="casual"
@@ -70,6 +70,20 @@
         android:text="Powered By Ahmed"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_getall"
+        android:layout_gravity="center"
+        android:text="Get all"
+        android:onClick="getall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_below="@+id/btn_getall"
+        android:layout_gravity="center"
+        android:text="go to welcome"
+        android:onClick="wel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

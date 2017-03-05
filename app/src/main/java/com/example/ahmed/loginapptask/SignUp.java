@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignUp extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class SignUp extends AppCompatActivity  implements View.OnClickListener{
 
     EditText user , pass , confirmpass;
     Button sign;
@@ -19,36 +21,71 @@ public class SignUp extends AppCompatActivity {
 
         initComp();
 
-        sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String u = user.getText().toString();
-                String p = pass.getText().toString();
-                String cp = confirmpass.getText().toString();
-
-                if (p.equals(cp)) {
-                    char c = u.charAt(0);
-                    String s = Character.toString(c).toUpperCase();
-                    s = s.concat((u.substring(1, u.length())));
-                    MainActivity.data.put(u, p);
-                    Toast.makeText(SignUp.this, "Thank you for Registration Mr " + s, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SignUp.this, Welcome.class);
-                    i.putExtra("username",s);
-                    startActivity(i);
-                    finish();
-                }
-                else {
-                    Toast.makeText(SignUp.this, "Password not identical", Toast.LENGTH_SHORT).show();
-                }
-            }});
 
     }
 
+    public void onClick(View view) {
+        String u = user.getText().toString().toLowerCase();
+        String p = pass.getText().toString();
+        String cp = confirmpass.getText().toString();
+        if (u.contains("'") || u.contains("-") || p.contains("'") || p.contains("-") || cp.contains("'") || cp.contains("-"))
+        {
+            Toast.makeText(this, "invalid character entered do not use - or ' ", Toast.LENGTH_SHORT).show();
+            user.setText(""); pass.setText(""); confirmpass.setText("");
+        }
+        else
+        {
+            if (p.equals(cp))
+            {
+                MyDatabase db = new MyDatabase(this);
+                boolean found = db.getUser(u);
+                if (found)
+                {
+                    user.setText(""); pass.setText(""); confirmpass.setText("");
+                    Toast.makeText(this, "This user is already register", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                   // result = db.insertUser(user.getText().toString().toLowerCase(), pass.getText().toString());
+                    if (true)
+                    {
+                        Long id = db.insertUser(u, p);
+                        if (id==-1)
+                        {
+                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            char c = u.charAt(0);
+                            String s = Character.toString(c).toUpperCase();
+                            s = s.concat((u.substring(1, u.length())));
+                            Intent i = new Intent(SignUp.this, Welcome.class);
+                            i.putExtra("username", s);
+                            startActivity(i);
+                            finish();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "not sign up", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            else
+            {
+                user.setText(""); pass.setText(""); confirmpass.setText("");
+                Toast.makeText(SignUp.this, "Password not identical", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     public void initComp ()
     {
-        user = (EditText) findViewById(R.id.et_u);
-        pass = (EditText) findViewById(R.id.et_p);
-        confirmpass = (EditText) findViewById(R.id.et_p2);
+        user = (EditText) findViewById(R.id.et_u); user.setText("");
+        pass = (EditText) findViewById(R.id.et_p); pass.setText("");
+        confirmpass = (EditText) findViewById(R.id.et_p2); confirmpass.setText("");
         sign = (Button) findViewById(R.id.btn_s);
+        sign.setOnClickListener(this);
     }
+
+
 }
