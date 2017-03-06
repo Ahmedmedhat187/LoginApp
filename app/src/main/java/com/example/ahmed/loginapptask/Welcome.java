@@ -29,6 +29,7 @@ public class Welcome extends AppCompatActivity implements AdapterView.OnItemClic
     DrawerLayout drawer;
     ActionBarDrawerToggle actionBarDrawerToggle;
     String[] data;
+    public static String name;
   //  MyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class Welcome extends AppCompatActivity implements AdapterView.OnItemClic
 
 
         Intent i = getIntent();
-        String name = i.getStringExtra("username");
+         name = i.getStringExtra("username");
         tv_name.setText("Welcome Mr "+name);
 
 
@@ -116,19 +117,21 @@ public class Welcome extends AppCompatActivity implements AdapterView.OnItemClic
         getSupportActionBar().setTitle(title);
     }
 
+
+
     public void selectItemFromDrawer(int position ) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (position == 0)
         {
-          //  transaction.replace(R.id.main ,new BlankFragment() ).commit();
+            transaction.replace(R.id.main_content , new Fragment_Picture()).commit();
         }
         else  if (position == 1)
         {
-          //  transaction.replace(R.id.main ,new BlankFragment2() ).commit();
+            transaction.replace(R.id.main_content , new Fragment_profile()).commit();
         }
         else  if (position == 2)
         {
-            transaction.replace(R.id.main ,new Fragment_setting()).commit();
+            transaction.replace(R.id.main_content , new Fragment_setting()).commit();
         }
         list.setItemChecked(position , true);
         drawer.closeDrawer(list);

@@ -2,11 +2,13 @@ package com.example.ahmed.loginapptask;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +17,30 @@ public class Fragment_setting extends Fragment implements View.OnClickListener {
     TextView tv_username , oldpass , newpass , confirm_newpass;
     Button confirm;
     View v ;
+    int index = 0;
+    LinearLayout linear;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_fragment_setting, container, false);
         return v;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt("index",index);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState == null)
+        {
+        }
+        else {
+            index = savedInstanceState.getInt("index");
+            linear.setBackgroundResource(Fragment_Picture.images[index]);
+        }
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -28,9 +50,12 @@ public class Fragment_setting extends Fragment implements View.OnClickListener {
         oldpass = (TextView) v.findViewById(R.id.editText_oldpass);
         newpass = (TextView) v.findViewById(R.id.editText_newpass);
         confirm_newpass = (TextView) v.findViewById(R.id.editText_confirmpass);
-        v = (Button) v.findViewById(R.id.button2);
-        v.setOnClickListener(this);
+        confirm = (Button) v.findViewById(R.id.button2);
+        confirm.setOnClickListener(this);
 
+        index = Fragment_Picture.index;
+        linear = (LinearLayout)v.findViewById(R.id.linear_setting);
+        linear.setBackgroundResource(Fragment_Picture.images[index]);
 
     }
 
