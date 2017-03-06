@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ahmed.loginapptask.Fragment_Picture">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:background="@drawable/bg2"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<TextView
+    android:textAppearance="?android:textAppearanceLarge"
+    android:gravity="center"
+    android:text="i"
+    android:id="@+id/t"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/image_gallary"
+        android:src="@drawable/bg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_below="@+id/image_gallary"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_pre"
+            android:layout_gravity="bottom"
+            android:text="Previous"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:text="Next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:text="Ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

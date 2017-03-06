@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "232669515621",
+    "firebase_url": "https://loginapptask.firebaseio.com",
+    "project_id": "loginapptask",
+    "storage_bucket": "loginapptask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232669515621:android:f142b77405170f33",
+        "android_client_info": {
+          "package_name": "com.example.ahmed.loginapptask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232669515621-4kv8d0iqsrieqnjnnlbb5aucp8f213lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLYzJhHZZuaaSQ1dXzeKgCBBVsaBUVrYM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232669515621-4kv8d0iqsrieqnjnnlbb5aucp8f213lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
